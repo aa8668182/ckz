@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ckz.core.mapper.UserInfoMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ckz.core.entity.UserInfo" id="userInfoMap">
+        <result property="id" column="id"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="creater" column="creater"/>
+        <result property="modifier" column="modifier"/>
+        <result property="constellation" column="constellation"/>
+        <result property="autograph" column="autograph"/>
+        <result property="userId" column="user_id"/>
+        <result property="countryCode" column="country_code"/>
+        <result property="countryName" column="country_name"/>
+        <result property="cityCode" column="city_code"/>
+        <result property="cityName" column="city_name"/>
+        <result property="areaCode" column="area_code"/>
+        <result property="areaName" column="area_name"/>
+        <result property="location" column="location"/>
+        <result property="longitude" column="longitude"/>
+        <result property="latitude" column="latitude"/>
+        <result property="height" column="height"/>
+        <result property="shape" column="shape"/>
+        <result property="bloodType" column="blood_type"/>
+        <result property="schoolId" column="school_id"/>
+        <result property="school" column="school"/>
+        <result property="sexOrientation" column="sex_orientation"/>
+        <result property="emotionalState" column="emotional_state"/>
+        <result property="hometownId" column="hometown_id"/>
+        <result property="hometown" column="hometown"/>
+        <result property="avatar" column="avatar"/>
+        <result property="bombUrl" column="bomb_url"/>
+        <result property="alipayCertified" column="alipay_certified"/>
+        <result property="wechatCertified" column="weChat_certified"/>
+        <result property="alipayAccount" column="alipay_account"/>
+        <result property="realName" column="real_name"/>
+        <result property="authno" column="authNo"/>
+        <result property="userGeographicPrivacy" column="user_geographic_privacy"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+    </resultMap>
+
+</mapper>

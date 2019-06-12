@@ -1,0 +1,14 @@
+###################################################################
+##   本地测试时，启动参数加上-Denv=YOUR-ENVIRONMENT(需要读取的环境)   ##
+##           配置中心地址：https://apollo.maopp.cn/                ##
+###################################################################
+
+#服务的唯一标识appId
+app:
+  id: bubble-live-channle-manager
+
+apollo:
+  bootstrap:
+    enabled: true
+    #配置命名空间     ATD-PSTD.commonConfig为部门公共配置
+    namespaces: application

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ckz.core.mapper.UserMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ckz.core.entity.User" id="userMap">
+        <result property="id" column="id"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="creater" column="creater"/>
+        <result property="modifier" column="modifier"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="phone" column="phone"/>
+        <result property="sex" column="sex"/>
+        <result property="nick" column="nick"/>
+        <result property="birthday" column="birthday"/>
+        <result property="mpLabel" column="mp_label"/>
+        <result property="amapId" column="amap_id"/>
+        <result property="token" column="token"/>
+        <result property="uuid" column="uuid"/>
+        <result property="userType" column="user_type"/>
+        <result property="netType" column="net_type"/>
+        <result property="appVersion" column="app_version"/>
+        <result property="downChannel" column="down_channel"/>
+        <result property="equipNum" column="equip_num"/>
+        <result property="channelId" column="channel_id"/>
+        <result property="idfa" column="idfa"/>
+        <result property="ip" column="ip"/>
+        <result property="pullFamilyId" column="pull_family_id"/>
+        <result property="appId" column="app_id"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, is_delete, create_time, modify_time, creater, modifier,username, password,
+        phone, sex, nick, birthday, mp_label, amap_id, token,user_type
+    </sql>
+
+    <!--根据用户手机号查询id-->
+    <select id="getUserIdByPhone" resultType="java.lang.Long">
+    SELECT id FROM mp_user WHERE phone=#{phone} AND is_delete=0 LIMIT 1
+  </select>
+
+
+    <select id="selectByAppId" resultMap="userMap">
+        select
+        <include refid="Base_Column_List" />
+        from mp_user
+        where is_delete = 0
+        and app_id = 2
+        <if test="userKey != null and ''">
+            and (phone = #{userKey} or nick like '${userKey}%')
+        </if>
+        <if test="startDate != null and '' and endDate != null and ''">
+            and create_time between startDate and endDate
+        </if>
+    </select>
+</mapper>

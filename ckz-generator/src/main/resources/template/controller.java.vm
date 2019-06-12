@@ -1,0 +1,26 @@
+package ${package}.controller;
+
+import com.ald.bubble.webcast.common.basebean.BaseController;
+import ${package}.service.${className}Service;
+import ${package}.entity.${className};
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
+import lombok.extern.slf4j.Slf4j;
+import io.swagger.annotations.Api;
+
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@RestController
+@RequestMapping(value="${secondModuleName}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+@Slf4j
+@Api(description = "${swaggerDescription}")
+public class ${className}Controller extends BaseController<${className}Service,${className}> {
+
+}

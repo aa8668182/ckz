@@ -1,0 +1,33 @@
+sharding:
+  jdbc:
+    datasource:
+      names: sharding_0,sharding_1,sharding_2
+      sharding_0:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://localhost:3306/sharding_0?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password:
+      sharding_1:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://localhost:3306/sharding_1?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password:
+      sharding_2:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://localhost:3306/sharding_2?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password:
+    config:
+      sharding:
+        default-database-strategy:
+          inline:
+            sharding-column: user_id
+            algorithm-inline-expression: sharding_${user_id % 2}
+        tables:
+          t_order:
+            actualDataNodes: sharding_${0..1}.t_order
+            keyGeneratorColumnName: order_id
+          t_order_item:
+            actualDataNodes: sharding_${0..1}.t_order_item
+            keyGeneratorColumnName: order_item_id
+

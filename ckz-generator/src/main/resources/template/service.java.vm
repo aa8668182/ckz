@@ -1,0 +1,17 @@
+package ${package}.service;
+
+import org.springframework.stereotype.Service;
+
+import ${package}.entity.${className};
+import ${package}.mapper.${className}Mapper;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}Service extends IService<${className}> {
+}

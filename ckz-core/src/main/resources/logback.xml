@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="projectName" value="teach-eval-web"/>
+	<contextName>${projectName}</contextName>
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>info</level>
+		</filter>
+
+		<encoder charset="UTF-8" class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>[logback]%d{yyyy-MM-dd HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 按照每天生成日志文件 -->
+	<!--<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/home/aladin/project/apilog/logback/webApp/${projectName}.log</file>
+		&lt;!&ndash; 正式环境日志输出解锁底下的 &ndash;&gt;
+		&lt;!&ndash; <file>/home/aladin/project/apilog/logback/webApp/${projectName}.log</file> &ndash;&gt;
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			&lt;!&ndash;日志文件输出的文件名&ndash;&gt;
+			<FileNamePattern>/home/aladin/project/apilog/logback/webApp/${projectName}.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+			&lt;!&ndash; 正式环境日志输出解锁底下的 &ndash;&gt;
+			&lt;!&ndash; <FileNamePattern>/home/aladin/project/apilog/logback/webApp/${projectName}.%d{yyyy-MM-dd}.%i.log</FileNamePattern> &ndash;&gt;
+			<MaxHistory>30</MaxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				&lt;!&ndash; or whenever the file size reaches 100MB &ndash;&gt;
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			&lt;!&ndash;格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符&ndash;&gt;
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n
+			</pattern>
+		</layout>
+	</appender>-->
+
+	<logger name="java.sql.Statement" level="DEBUG"/>
+	<logger name="java.sql.PreparedStatement" level="DEBUG"/>
+	<logger name="java.sql.ResultSet" level="DEBUG"/>
+
+
+	<root>
+		<!--<appender-ref ref="FILE"/>-->
+		<appender-ref ref="CONSOLE"/>
+		<level value="info"/>
+	</root>
+</configuration>

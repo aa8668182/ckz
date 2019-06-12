@@ -1,0 +1,163 @@
+logging:
+  level:
+    com.live.channel.manager.**: debug
+
+server:
+  port: 80 #\u542F\u52A8\u7AEF\u53E3
+
+eureka:
+  instance:
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+  #    instance-id:  ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+  #    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  #  http:
+  #    multipart:
+  #      maxFileSize: 100Mb
+  #      maxRequestSize: 1000Mb
+  application:
+    name: live-channel-manager
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  redis:
+    host: 47.100.29.47
+    port: 6379
+    database: 2
+    timeout: 10s
+    jedis:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+        max-active: 20
+        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+        max-wait: 1ms
+        # 连接池中的最大空闲连接 默认 8
+        max-idle: 15
+        # 连接池中的最小空闲连接 默认 0
+        min-idle: 0
+  # spring session使用存储类型，spirngboot默认就是使用redis方式，如果不想用可以填none。
+  session:
+    store-type: redis
+#  datasource:
+#    name: bubble
+#    url: jdbc:mysql://47.100.29.47:6603/bubble?useUnicode=true&characterEncoding=utf-8
+#    username: bubble
+#    password: DevBubble789#!
+#    # \u4F7F\u7528druid\u6570\u636E\u6E90
+#    type: com.zaxxer.hikari.HikariDataSource
+#    hikari:
+#      #      \u6C60\u4E2D\u7EF4\u62A4\u7684\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\u6570
+#      minimum-idle: 5
+#      #      \u6C60\u4E2D\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u5305\u62EC\u95F2\u7F6E\u548C\u4F7F\u7528\u4E2D\u7684\u8FDE\u63A5
+#      maximum-pool-size: 15
+#      #      \u81EA\u52A8\u63D0\u4EA4\u4ECE\u6C60\u4E2D\u8FD4\u56DE\u7684\u8FDE\u63A5
+#      auto-commit: true
+#      #      \u8FDE\u63A5\u5141\u8BB8\u5728\u6C60\u4E2D\u95F2\u7F6E\u7684\u6700\u957F\u65F6\u95F4
+#      idle-timeout: 30000
+#      #      \u6C60\u4E2D\u8FDE\u63A5\u6700\u957F\u751F\u547D\u5468\u671F
+#      pool-name: DatebookHikariCP
+#      max-lifetime: 1800000
+#      #      \u7B49\u5F85\u6765\u81EA\u6C60\u7684\u8FDE\u63A5\u7684\u6700\u5927\u6BEB\u79D2\u6570
+#      connection-timeout: 30000
+#  rabbitmq:
+#    host: ${RABBIT_MQ_HOST:localhost}
+#    port:  ${RABBIT_MQ_PORT:5672}
+#    username: guest
+#    password: guest
+#  sleuth:
+#    enabled: true
+#    http:
+#      legacy:
+#        enabled: true
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  typeAliasesPackage: com.live.channel.manager.entity
+  #  typeHandlersPackage: \u81EA\u5B9A\u4E49TypeHandler
+  #  type-enums-package: com.baomidou.mybatisplus.samples.quickstart.enums \u679A\u4E3E\u7C7B\u578B
+  configuration:
+    mapUnderscoreToCamelCase: true
+  #    cache-enabled: false \u8FD9\u4E2A\u8BE5\u4E0D\u8BE5\u5F00\u542F\u5462 \u9ED8\u8BA4\u662F\u5F00\u542F\u7684
+  global-config:
+    #\u5B57\u6BB5\u7B56\u7565 0:"\u5FFD\u7565\u5224\u65AD",1:"\u975E NULL \u5224\u65AD"),2:"\u975E\u7A7A\u5224\u65AD"
+    field-strategy: 2
+    #\u5237\u65B0mapper \u8C03\u8BD5\u795E\u5668 \u4E0D\u5EFA\u8BAE\u5728\u751F\u4EA7\u73AF\u5883\u6253\u5F00
+    refresh-mapper: true
+    #\u6570\u636E\u5E93\u5927\u5199\u4E0B\u5212\u7EBF\u8F6C\u6362
+    #capital-mode: true
+    #\u5E8F\u5217\u63A5\u53E3\u5B9E\u73B0\u7C7B\u914D\u7F6E
+    #key-generator: com.baomidou.springboot.xxx
+    #    #\u903B\u8F91\u5220\u9664\u914D\u7F6E
+    #    sqlInjector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    #    logic-delete-value: 1
+    #    logic-not-delete-value: 0
+    #\u81EA\u5B9A\u4E49\u586B\u5145\u7B56\u7565\u63A5\u53E3\u5B9E\u73B0
+    #meta-object-handler: com.baomidou.springboot.xxx
+    #\u81EA\u5B9A\u4E49SQL\u6CE8\u5165\u5668
+    #sql-injector: com.baomidou.springboot.xxx
+    db-config:
+      column-like: false
+      #\u4E3B\u952E\u7C7B\u578B  0:"\u6570\u636E\u5E93ID\u81EA\u589E", 1:"\u7528\u6237\u8F93\u5165ID",2:"\u5168\u5C40\u552F\u4E00ID (\u6570\u5B57\u7C7B\u578B\u552F\u4E00ID)", 3:"\u5168\u5C40\u552F\u4E00ID UUID";
+      id-type: AUTO
+      #\u903B\u8F91\u5220\u9664\u914D\u7F6E
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      tablePrefix: mp_
+      #\u8868\u540D\u3001\u662F\u5426\u4F7F\u7528\u4E0B\u5212\u7EBF\u547D\u540D\uFF0C\u9ED8\u8BA4\u6570\u636E\u5E93\u8868\u4F7F\u7528\u4E0B\u5212\u7EBF\u547D\u540D
+      table-underline: true
+      db-column-underline: true
+      capital-mode: true
+
+istest: true
+
+
+jwtconfig:
+  base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
+  expiresSecond: 864000
+  tokenHeader: Authorization
+
+pagehelper:
+  reasonable: false
+  support-methods-arguments: true
+  params: count=countSql
+  row-bounds-with-count: true
+  helper-dialect: mysql
+
+
+
+
+
+sharding:
+  jdbc:
+    datasource:
+      names: sharding_0,sharding_1,sharding_2
+      sharding_0:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://localhost:3306/sharding_0?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password:
+      sharding_1:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://localhost:3306/sharding_1?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password:
+      sharding_2:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://localhost:3306/sharding_2?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password:
+    config:
+      masterslave:
+        load-balance-algorithm-type: round_robin
+        name: sharding
+        masterDataSourceName: sharding_0
+        slaveDataSourceNames: sharding_1,sharding_2
+

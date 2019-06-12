@@ -1,0 +1,42 @@
+package ${package}.entity;
+
+import com.baomidou.mybatisplus.annotation.*;
+import com.ald.bubble.webcast.common.basebean.BaseEntity;
+import lombok.Data;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Date;
+
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@TableName("${tableName}")
+@Data
+@ApiModel(value="${className}",description="${comments}")
+public class ${className} extends BaseEntity {
+	private static final long serialVersionUID = 1L;
+	
+#foreach ($column in $columns)
+	#if($column.columnName == $pk.columnName)
+    //$column.comments
+    @TableId
+    @ApiModelProperty(value="$column.comments")
+    private $column.attrType $column.attrname;
+	#else
+    //$column.comments
+    @TableField("$column.columnName")
+    @ApiModelProperty(value="$column.comments")
+    private $column.attrType $column.attrname;
+	#end
+
+#end
+}

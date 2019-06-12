@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ckz.core.mapper.BillRecordMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ckz.core.entity.BillRecord" id="billRecordMap">
+        <result property="id" column="id"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="creater" column="creater"/>
+        <result property="modifier" column="modifier"/>
+        <result property="userId" column="user_id"/>
+        <result property="billType" column="bill_type"/>
+        <result property="smallType" column="small_type"/>
+        <result property="title" column="title"/>
+        <result property="money" column="money"/>
+        <result property="moneyUnit" column="money_unit"/>
+        <result property="inFlowNum" column="in_flow_num"/>
+        <result property="outFlowNum" column="out_flow_num"/>
+        <result property="channel" column="channel"/>
+        <result property="commonId" column="common_id"/>
+        <result property="valueId" column="value_id"/>
+        <result property="equipNum" column="equip_num"/>
+        <result property="realMoney" column="real_money"/>
+        <result property="isAdopt" column="is_adopt"/>
+        <result property="mpMoney" column="mp_money"/>
+    </resultMap>
+
+</mapper>

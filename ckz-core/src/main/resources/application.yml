@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: dev
+#    include:
+
+# --------------------
+#spring:
+#  profiles:
+#    active: dev
+#    include:
+
+# --------------------
+#spring:
+#  profiles:
+#    active: dev
+#    include:
+
+# --------------------
+#spring:
+#  profiles:
+#    active: dev
+#    include:

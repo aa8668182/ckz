@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ckz.core.mapper.MpUserDoMapper" >
+  <resultMap id="BaseResultMap" type="com.ckz.core.entity.MpUserDo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="nick" property="nick" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="CHAR" />
+    <result column="mp_label" property="mpLabel" jdbcType="VARCHAR" />
+    <result column="amap_id" property="amapId" jdbcType="BIGINT" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="TINYINT" />
+    <result column="net_type" property="netType" jdbcType="VARCHAR" />
+    <result column="app_version" property="appVersion" jdbcType="VARCHAR" />
+    <result column="down_channel" property="downChannel" jdbcType="VARCHAR" />
+    <result column="equip_num" property="equipNum" jdbcType="VARCHAR" />
+    <result column="channel_id" property="channelId" jdbcType="BIGINT" />
+    <result column="idfa" property="idfa" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="pull_family_id" property="pullFamilyId" jdbcType="BIGINT" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_delete, create_time, modify_time, creater, modifier, username, password, phone,
+    sex, nick, birthday, mp_label, amap_id, token, uuid, user_type, net_type, app_version,
+    down_channel, equip_num, channel_id, idfa, ip, pull_family_id, app_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from mp_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from mp_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ckz.core.entity.MpUserDo" >
+    insert into mp_user (id, is_delete, create_time,
+      modify_time, creater, modifier,
+      username, password, phone,
+      sex, nick, birthday, mp_label,
+      amap_id, token, uuid,
+      user_type, net_type, app_version,
+      down_channel, equip_num, channel_id,
+      idfa, ip, pull_family_id,
+      app_id)
+    values (#{id,jdbcType=BIGINT}, #{isDelete,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP},
+      #{modifyTime,jdbcType=TIMESTAMP}, #{creater,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR},
+      #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+      #{sex,jdbcType=TINYINT}, #{nick,jdbcType=VARCHAR}, #{birthday,jdbcType=CHAR}, #{mpLabel,jdbcType=VARCHAR},
+      #{amapId,jdbcType=BIGINT}, #{token,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR},
+      #{userType,jdbcType=TINYINT}, #{netType,jdbcType=VARCHAR}, #{appVersion,jdbcType=VARCHAR},
+      #{downChannel,jdbcType=VARCHAR}, #{equipNum,jdbcType=VARCHAR}, #{channelId,jdbcType=BIGINT},
+      #{idfa,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{pullFamilyId,jdbcType=BIGINT},
+      #{appId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ckz.core.entity.MpUserDo" >
+    insert into mp_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="nick != null" >
+        nick,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="mpLabel != null" >
+        mp_label,
+      </if>
+      <if test="amapId != null" >
+        amap_id,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="netType != null" >
+        net_type,
+      </if>
+      <if test="appVersion != null" >
+        app_version,
+      </if>
+      <if test="downChannel != null" >
+        down_channel,
+      </if>
+      <if test="equipNum != null" >
+        equip_num,
+      </if>
+      <if test="channelId != null" >
+        channel_id,
+      </if>
+      <if test="idfa != null" >
+        idfa,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="pullFamilyId != null" >
+        pull_family_id,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="nick != null" >
+        #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=CHAR},
+      </if>
+      <if test="mpLabel != null" >
+        #{mpLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="amapId != null" >
+        #{amapId,jdbcType=BIGINT},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=TINYINT},
+      </if>
+      <if test="netType != null" >
+        #{netType,jdbcType=VARCHAR},
+      </if>
+      <if test="appVersion != null" >
+        #{appVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="downChannel != null" >
+        #{downChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="equipNum != null" >
+        #{equipNum,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null" >
+        #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="idfa != null" >
+        #{idfa,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="pullFamilyId != null" >
+        #{pullFamilyId,jdbcType=BIGINT},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ckz.core.entity.MpUserDo" >
+    update mp_user
+    <set >
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="nick != null" >
+        nick = #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=CHAR},
+      </if>
+      <if test="mpLabel != null" >
+        mp_label = #{mpLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="amapId != null" >
+        amap_id = #{amapId,jdbcType=BIGINT},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=TINYINT},
+      </if>
+      <if test="netType != null" >
+        net_type = #{netType,jdbcType=VARCHAR},
+      </if>
+      <if test="appVersion != null" >
+        app_version = #{appVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="downChannel != null" >
+        down_channel = #{downChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="equipNum != null" >
+        equip_num = #{equipNum,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null" >
+        channel_id = #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="idfa != null" >
+        idfa = #{idfa,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="pullFamilyId != null" >
+        pull_family_id = #{pullFamilyId,jdbcType=BIGINT},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ckz.core.entity.MpUserDo" >
+    update mp_user
+    set is_delete = #{isDelete,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      creater = #{creater,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      nick = #{nick,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=CHAR},
+      mp_label = #{mpLabel,jdbcType=VARCHAR},
+      amap_id = #{amapId,jdbcType=BIGINT},
+      token = #{token,jdbcType=VARCHAR},
+      uuid = #{uuid,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=TINYINT},
+      net_type = #{netType,jdbcType=VARCHAR},
+      app_version = #{appVersion,jdbcType=VARCHAR},
+      down_channel = #{downChannel,jdbcType=VARCHAR},
+      equip_num = #{equipNum,jdbcType=VARCHAR},
+      channel_id = #{channelId,jdbcType=BIGINT},
+      idfa = #{idfa,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      pull_family_id = #{pullFamilyId,jdbcType=BIGINT},
+      app_id = #{appId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByAppId" resultType="com.ckz.core.domain.response.UserRegResp">
+    SELECT
+    u.nick nick,
+    u.mp_label mpLabel,
+    u.phone phone,
+    r.`value` photo,
+    u.sex sex,
+    u.birthday age,
+    u.create_time createTime
+    FROM
+    mp_user u
+    INNER JOIN mp_resource r ON u.id = r.common_id
+    AND r.is_delete = 0
+    AND resource_type = 0
+    INNER JOIN mp_user_info i ON u.id = i.user_id
+    AND i.is_delete = 0
+    WHERE
+    u.is_delete = 0
+    AND u.app_id = 2
+    <if test="userKey != null and userKey != ''">
+      and (u.phone = #{userKey} or u.nick like CONCAT('%',#{userKey},'%') or u.mp_label = #{userKey})
+    </if>
+    <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+      and u.create_time between #{startDate} and #{endDate}
+    </if>
+    order by  u.create_time desc
+  </select>
+</mapper>
