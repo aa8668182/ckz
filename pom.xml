@@ -23,7 +23,7 @@
        <!-- <java.version>1.8</java.version>
         <sharding-sphere.version>4.0.0-RC1-SNAPSHOT</sharding-sphere.version>-->
         <scala-lang.version>2.12.8</scala-lang.version>
-        <kotlin.version>1.3.21</kotlin.version>
+        <kotlin.version>1.6.0</kotlin.version>
         <emoji-java.version>4.0.0</emoji-java.version>
         <mybatis-plus.version>3.0.7</mybatis-plus.version>
     </properties>
